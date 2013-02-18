@@ -51,7 +51,7 @@ var narration = {
 
   render: function(narration_url){
     narration.request(narration_url); // request the narrations
-    $('#sc-widget').attr("src", narration_url);
+    $('#sc-widget').attr("src", narration_url + "&show_artwork=false");
     $('#timeslider-wrapper').hide();
     $('#soundCloudTopContainer').show();
 
