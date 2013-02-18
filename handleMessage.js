@@ -1,9 +1,4 @@
- var  db = require('../../src/node/db/DB').db,
-     API = require('../../src/node/db/API.js'),
-   async = require('../../src/node_modules/async'),
-settings = require('../../src/node/utils/Settings');
-
-var pluginSettings = settings.ep_narration;
+var db = require('../../src/node/db/DB').db,
 
 // When a new NARRATION_SAVE message comes in from the client
 exports.handleMessage = function(hook_name, context, callback){
@@ -21,7 +16,7 @@ exports.handleMessage = function(hook_name, context, callback){
     }
   }
   
-  // When a NARRATION_SAVE message comes in from the client
+  // When a NARRATION_LOAD message comes in from the client
   if (context.message && context.message.data){
     if (context.message.data.type == 'NARRATION_LOAD' ) { // if it's a request to save a narration
 
