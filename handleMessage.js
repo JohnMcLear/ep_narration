@@ -1,7 +1,6 @@
  var  db = require('../../src/node/db/DB').db,
      API = require('../../src/node/db/API.js'),
    async = require('../../src/node_modules/async'),
-   check = require('validator').check,
 settings = require('../../src/node/utils/Settings');
 
 var pluginSettings = settings.ep_email_notifications;

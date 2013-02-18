@@ -2,25 +2,15 @@
  var  db = require('../../src/node/db/DB').db,
      API = require('../../src/node/db/API.js'),
    async = require('../../src/node_modules/async'),
-   check = require('validator').check,
-   email = require('emailjs'),
 settings = require('../../src/node/utils/Settings');
 
 // Settings -- EDIT THESE IN settings.json not here..
-var pluginSettings = settings.ep_email_notifications;
-var checkFrequency = pluginSettings.checkFrequency || 60000; // 10 seconds
-var staleTime = pluginSettings.staleTime || 300000; // 5 minutes
-var fromName = pluginSettings.fromName || "Etherpad";
-var fromEmail = pluginSettings.fromEmail || "pad@etherpad.org";
-var urlToPads = pluginSettings.urlToPads || "http://beta.etherpad.org/p/";
-var emailServer = pluginSettings.emailServer || {host:"127.0.0.1"};
+var pluginSettings = settings.ep_narrations;
 
 // A timer object we maintain to control how we send emails
 var timers = {};
 
 // Connect to the email server -- This might not be the ideal place to connect but it stops us having lots of connections 
-var server  = email.server.connect(emailServer);
-
 exports.padUpdate = function (hook_name, _pad) {
   var pad = _pad.pad;
   var padId = pad.id;
