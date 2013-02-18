@@ -20,11 +20,8 @@ exports.handleMessage = function(hook_name, context, callback){
 
     }
   }
-  callback();
-}
-
-// When a new NARRATION_LOAD message comes in from the client
-exports.handleMessage = function(hook_name, context, callback){
+  
+  // When a NARRATION_SAVE message comes in from the client
   if (context.message && context.message.data){
     if (context.message.data.type == 'NARRATION_LOAD' ) { // if it's a request to save a narration
 

@@ -3,15 +3,13 @@
     {
       "name": "ep_narration",
       "hooks": {
-        "padUpdate": "ep_narration/update",
         "handleMessage": "ep_narration/handleMessage",
         "eejsBlock_editbarMenuRight": "ep_narration/client",
         "eejsBlock_scripts": "ep_narration/client",
-        "eejsBlock_embedPopup": "ep_narration/client:eejsBlock_embedPopup"
       },
       "client_hooks": {
         "postAceInit":"ep_narration/static/js/ep_email:postAceInit",
-        "handleClientMessage_emailSubscriptionSuccess":"ep_narration/static/js/ep_email"
+        "handleClientMessage_narration":"ep_narration/static/js/ep_narration"
       }
     }
   ]
