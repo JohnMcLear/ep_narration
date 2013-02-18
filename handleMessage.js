@@ -8,7 +8,7 @@ var pluginSettings = settings.ep_email_notifications;
 // When a new message comes in from the client - FML this is ugly
 exports.handleMessage = function(hook_name, context, callback){
   if (context.message && context.message.data){
-    if (context.message.data.type == 'USERINFO_UPDATE' ) { // if it's a request to update an authors email
+    if (context.message.data.type == 'NARRATION_SAVE' ) { // if it's a request to update an authors email
       if (context.message.data.userInfo){
         if(context.message.data.userInfo.email){ // it contains email
           console.debug(context.message);

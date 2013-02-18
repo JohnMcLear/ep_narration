@@ -11,7 +11,7 @@ exports.eejsBlock_embedPopup = function (hook_name, args, cb) {
 };
 
 exports.eejsBlock_editbarMenuRight = function (hook_name, args, cb) {
-  args.content = args.content + eejs.require("ep_narration/templates/button.html", {}, module);
+  args.content = eejs.require("ep_narration/templates/button.html", {}, module) + args.content;
   return cb();
 };
 
