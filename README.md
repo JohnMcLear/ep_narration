@@ -21,8 +21,8 @@ narrationTest:{
 # Timeslider: 
 ```
 * done - add popcorn library. <-- see eejsScripts and eejsTimesliderScripts
-* soundcloud widget display (e.g. http://studio.sketchpad.cc/sp/pad/view/ro.9gAjbINR1Ar7$/latest?soundcloud_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170 ) <-- Replace timeslider Element with SoundCloud widget (Javascript hack on timeslider ready -- be mindful not to destroy the timeslider as a toggle option might be useful) <-- need the JS you used
-* scrubbing in widget moves revision <-- relatively easy see cues object for timestamp/revision relationship <-- can probably use your JS
+* soundcloud widget display (e.g. http://studio.sketchpad.cc/sp/pad/view/ro.9gAjbINR1Ar7$/latest?soundcloud_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170 ) <-- Replace timeslider Element with SoundCloud widget (Javascript hack on timeslider ready -- be mindful not to destroy the timeslider as a toggle option might be useful) <-- need the JS you used <-- Need Cue logic
+* scrubbing in widget moves revision <-- relatively easy see cues object for timestamp/revision relationship <-- can probably use your JS <-- need cue logic
 * done - Must be able to target a narration based on the URL <-- see /static/js/narration.js
   /  http://studio.sketchpad.cc/sp/pad/view/ro.9gAjbINR1Ar7$/latest?soundcloud_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170
 * done - Test URL = http://debian:9001/p/moo/timeslider?narration_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170#6
