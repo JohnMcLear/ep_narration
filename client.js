@@ -5,13 +5,13 @@ exports.eejsBlock_scripts = function (hook_name, args, cb) {
   return cb();
 };
 
-exports.eejsBlock_embedPopup = function (hook_name, args, cb) {
-  args.content = args.content + eejs.require("ep_narration/templates/embedFrame.html", {}, module);
+exports.eejsBlock_editbarMenuRight = function (hook_name, args, cb) {
+  args.content = eejs.require("ep_narration/templates/button.html", {}, module) + args.content;
   return cb();
 };
 
-exports.eejsBlock_editbarMenuRight = function (hook_name, args, cb) {
-  args.content = eejs.require("ep_narration/templates/button.html", {}, module) + args.content;
+exports.eejsBlock_timesliderScripts = function (hook_name, args, cb) {
+  args.content = args.content + eejs.require("ep_narration/templates/scripts.html", {}, module);
   return cb();
 };
 
