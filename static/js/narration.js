@@ -2,14 +2,9 @@ if(typeof exports == 'undefined'){
   var exports = this['mymodule'] = {};
 }
 
-// Placeholder
+// This is on the pad only, not the timeslider
 exports.postAceInit = function(hook, context){
 }
-
-// Placeholder
-function init(){
-}
-
 
 /* Sends the narration cues and URL to teh server */
 function sendNarrationToServer(){
@@ -35,6 +30,16 @@ function requestNarrationFromServer(url){
 }
 
 /* What to do when we recieve the narration information from the server */
-exports.handleClientMessage_narrations = function(hook, context){ // was subscribing to the email a big win or fail?
+exports.handleClientMessage_narration = function(hook, context){
   console.log(context); // should include cues and timestamps
+}
+
+function getURLParameter(name){
+  return decodeURI(
+   (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+  );
+}
+
+function displayNarration(narration_url){
+  alert("Displaying narration");
 }

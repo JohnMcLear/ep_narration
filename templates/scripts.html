@@ -1,3 +1,9 @@
 <script type='text/javascript' src="//connect.soundcloud.com/sdk.js"></script>
 <script type='text/javascript' src="//cdn.popcornjs.org/code/dist/popcorn.min.js"></script>
 <script type='text/javascript' src='/static/plugins/ep_narration/static/js/narration.js'></script>
+<script>
+  if(getURLParameter("narration_url")){ // If a Narration URL exists in the address bar
+    displayNarration(getURLParameter("narration_url"));
+  }
+</script>
+

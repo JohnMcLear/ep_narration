@@ -9,8 +9,8 @@
         "eejsBlock_timesliderScripts": "ep_narration/client"
       },
       "client_hooks": {
-        "postAceInit":"ep_narration/static/js/ep_email:postAceInit",
-        "handleClientMessage_narration":"ep_narration/static/js/ep_narration"
+        "postAceInit":"ep_narration/static/js/narration",
+        "handleClientMessage_narration":"ep_narration/static/js/narration"
       }
     }
   ]
