@@ -3,7 +3,7 @@
     {
       "name": "ep_narration",
       "hooks": {
-        "handleMessage": "ep_narration/handleMessage",
+        "handleMessage": "ep_narration/server",
         "eejsBlock_editbarMenuRight": "ep_narration/client",
         "eejsBlock_timesliderTop": "ep_narration/client",
         "eejsBlock_scripts": "ep_narration/client",
