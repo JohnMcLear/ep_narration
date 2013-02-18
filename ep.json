@@ -1,0 +1,17 @@
+{
+  "parts":[
+    {
+      "name": "ep_email_notifications",
+      "hooks": {
+        "padUpdate": "ep_email_notifications/update",
+        "handleMessage": "ep_email_notifications/handleMessage",
+        "eejsBlock_scripts": "ep_email_notifications/client",
+        "eejsBlock_embedPopup": "ep_email_notifications/client:eejsBlock_embedPopup"
+      },
+      "client_hooks": {
+        "postAceInit":"ep_email_notifications/static/js/ep_email:postAceInit",
+        "handleClientMessage_emailSubscriptionSuccess":"ep_email_notifications/static/js/ep_email"
+      }
+    }
+  ]
+}
