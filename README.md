@@ -2,7 +2,7 @@
 Create audio narrations over pad and have it play in time with your changes.
 
 # Installation
-Set your callback endpoint in soundcloud as http://yourserver/static/plugins/ep_narrations/templates/callback.html
+Set your callback endpoint in soundcloud as http://yourEtherpadServerHostname/ep_narrations/templates/callback
 
 # TODO
 Pad:
@@ -24,11 +24,12 @@ narrationTest:{
 * soundcloud widget display (e.g. http://studio.sketchpad.cc/sp/pad/view/ro.9gAjbINR1Ar7$/latest?soundcloud_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170 ) <-- Replace timeslider Element with SoundCloud widget (Javascript hack on timeslider ready -- be mindful not to destroy the timeslider as a toggle option might be useful) <-- need the JS you used
 * scrubbing in widget moves revision <-- relatively easy see cues object for timestamp/revision relationship <-- can probably use your JS
 * done - Must be able to target a narration based on the URL <-- see /static/js/narration.js
-
-http://studio.sketchpad.cc/sp/pad/view/ro.9gAjbINR1Ar7$/latest?soundcloud_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170
-
+  /  http://studio.sketchpad.cc/sp/pad/view/ro.9gAjbINR1Ar7$/latest?soundcloud_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170
+* done - Test URL = http://debian:9001/p/moo/timeslider?narration_url=http://soundcloud.com/aribadernatal/sketchcast_1344200733170#6
+* done - Test URL #2 = http://debian:9001/p/moo/timeslider?narration_url=http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F55302588#6
 * done - CSS <-- see /static/css/style.css to add stuff in
 * done - callback file see /ep_narration/callback
+
 ```
 
 # FUTURE VERSIONS TODO

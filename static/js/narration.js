@@ -14,6 +14,8 @@ exports.handleClientMessage_narration = function(hook, context){
 
 var narration = {
 
+  cues : {},
+
   /* Sends the narration cues and URL to teh server */
   send: function (){
     var url = narration.gup("narration_url");
@@ -28,7 +30,7 @@ var narration = {
 
   /* Recieved cues from server, shove em into our page */
   recieve: function(msg){
-
+    cues = msg.cues;
   },
 
   /* Requests the narration cues from the server */
@@ -40,10 +42,33 @@ var narration = {
     // Will recieve a message back with either null or an object of cues <-> timestamps
   },
 
+  /* Given a timestmap we move to a specific revision */
+  moveToRev: function(timestamp){
+    console.log("moving to TS", timestamp);
+    // var revisionNumber = getRevisionNumberFromTimestamp(timestamp);
+    // Do logic to move to X revision
+  },
+
   render: function(narration_url){
     narration.request(narration_url); // request the narrations
+    $('#sc-widget').attr("src", narration_url);
     $('#timeslider-wrapper').hide();
     $('#soundCloudTopContainer').show();
+
+   (function(){
+
+     var widgetIframe = document.getElementById('sc-widget');
+     var widget       = SC.Widget(widgetIframe);
+
+     widget.bind(SC.Widget.Events.READY, function() {
+       widget.bind(SC.Widget.Events.SEEK, function() { // on click of narration
+         console.log("Moving ooh yes im moving to a new revision");
+         widget.getPosition(function(pos){
+           narration.moveToRev(pos);
+         });
+       });
+     });
+    }());
   },
 
   gup: function(name, url) { // gets url parameters
