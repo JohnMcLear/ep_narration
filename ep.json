@@ -5,11 +5,13 @@
       "hooks": {
         "handleMessage": "ep_narration/handleMessage",
         "eejsBlock_editbarMenuRight": "ep_narration/client",
+        "eejsBlock_timesliderTop": "ep_narration/client",
         "eejsBlock_scripts": "ep_narration/client",
-        "eejsBlock_timesliderScripts": "ep_narration/client"
+        "eejsBlock_timesliderScripts": "ep_narration/client",
+        "eejsBlock_timesliderStyles": "ep_narration/client"
       },
       "client_hooks": {
-        "postAceInit":"ep_narration/static/js/narration",
+        "postTimesliderInit":"ep_narration/static/js/narration",
         "handleClientMessage_narration":"ep_narration/static/js/narration"
       }
     }

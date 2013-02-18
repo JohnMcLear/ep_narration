@@ -3,43 +3,61 @@ if(typeof exports == 'undefined'){
 }
 
 // This is on the pad only, not the timeslider
-exports.postAceInit = function(hook, context){
-}
-
-/* Sends the narration cues and URL to teh server */
-function sendNarrationToServer(){
-  var userId = pad.getUserId();
-  var message = {};
-  message.type = 'NARRATION_SAVE';
-  message.padId = pad.getPadId();
-  message.userId = userId;
-  message.cues = cues; // TODO Ari
-  message.url = url; // TODO Ari
-  pad.collabClient.sendMessage(message);
-}
-
-/* Requests the narration cues from the server */
-function requestNarrationFromServer(url){
-  var userId = pad.getUserId();
-  var message = {};
-  message.type = 'NARRATION_LOAD';
-  message.padId = pad.getPadId();
-  if(url) message.url = url; // TODO Ari
-  pad.collabClient.sendMessage(message);
-  // Will recieve a message back with either null or an object of cues <-> timestamps
+exports.postTimesliderInit = function(hook, context){
+  narration.init();
 }
 
 /* What to do when we recieve the narration information from the server */
 exports.handleClientMessage_narration = function(hook, context){
-  console.log(context); // should include cues and timestamps
+  narration.recieve(context);
 }
 
-function getURLParameter(name){
-  return decodeURI(
-   (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-  );
+var narration = {
+
+  /* Sends the narration cues and URL to teh server */
+  send: function (){
+    var url = narration.gup("narration_url");
+    var message = {
+      type      : 'NARRATION_SAVE',
+      component : 'pad',
+      cues      : cues, // TODO Ari
+      url       : url // TODO Ari
+    }
+    socket.send(JSON.stringify(message));
+  },
+
+  /* Recieved cues from server, shove em into our page */
+  recieve: function(msg){
+
+  },
+
+  /* Requests the narration cues from the server */
+  request: function(url){
+    var message = {};
+    message.type = 'NARRATION_LOAD';
+    if(url) message.url = url; // TODO Ari
+    socket.send(message);
+    // Will recieve a message back with either null or an object of cues <-> timestamps
+  },
+
+  render: function(narration_url){
+    narration.request(narration_url); // request the narrations
+    $('#timeslider-wrapper').hide();
+    $('#soundCloudTopContainer').show();
+  },
+
+  gup: function(name, url) { // gets url parameters
+    name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+    var results = new RegExp('[?&]'+name+'=?([^&#]*)').exec(url || window.location.href);
+    return results == null ? null : results[1] || true;
+  },
+
+  init: function(){
+    var url = narration.gup("narration_url", window.location);
+    if(url){
+      narration.render(url);
+    }
+  }
 }
 
-function displayNarration(narration_url){
-  alert("Displaying narration");
-}
+exports.narration = narration;
