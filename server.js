@@ -38,7 +38,7 @@ exports.handleMessage = function(hook_name, context, callback){
 exports.registerRoute = function (hook_name, args, cb) {
   args.app.get('/ep_narration/callback', function(req, res) {
     var hostname = req.headers.host;
-    res.send('<script>document.domain='+hostname+';</script><script src="//connect.soundcloud.com/sdk.js"></script>');
+    res.send('<script>document.domain="'+hostname+'";</script><script src="//connect.soundcloud.com/sdk.js"></script>');
   });
   cb();
 }
