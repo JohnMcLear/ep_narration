@@ -1,4 +1,4 @@
-var db = require('../../src/node/db/DB').db,
+var db = require('../../src/node/db/DB').db;
 
 // When a new NARRATION_SAVE message comes in from the client
 exports.handleMessage = function(hook_name, context, callback){
