@@ -9,7 +9,7 @@ Pad:
 ```
 * new button widget <-- eejsToolBarRight (easy) <-- Need the HTML widget for recording audio
 * done - SoundCloud JS code.   <-- see eejsScripts
-TODO -> when recording finishes, POST json to new API endpoint (/sp/narrations), and this saves to new DB table (narrations) <-- possible but a bit hacky -- see https://github.com/JohnMcLear/ep_email_notifications/blob/master/update.js for reference on how to read/write database <-- will need to expose 1 new API endpoint IE /api/ep_narration/+padID/
+* when recording finishes, POST json to new API endpoint (/sp/narrations), and this saves to new DB table (narrations) <-- possible but a bit hacky -- see https://github.com/JohnMcLear/ep_email_notifications/blob/master/update.js for reference on how to read/write database (done with sockets but dont have the client side code to begin recording etc. yet)
 
 padId: narration:ekXhBftrf0 (key)
 cues (value): 
