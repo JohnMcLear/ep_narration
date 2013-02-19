@@ -18,14 +18,24 @@ var narration = {
 
   /* Sends the narration cues and URL to teh server */
   send: function (){
+    var padId = narration.getPadId();
     var url = narration.gup("narration_url");
-    var message = {
+
+    var data = {
       type      : 'NARRATION_SAVE',
       component : 'pad',
       cues      : cues, // TODO Ari
-      url       : url // TODO Ari
+      url       : url, // TODO Ari
+      padId     : padId
     }
-    socket.send(JSON.stringify(message));
+
+    socket.json.send(
+    {
+      type: "COLLABROOM",
+      component: "pad",
+      data: data
+    });
+
   },
 
   /* Recieved cues from server, shove em into our page */
@@ -35,10 +45,21 @@ var narration = {
 
   /* Requests the narration cues from the server */
   request: function(url){
+    var padId = narration.getPadId();
     var message = {};
-    message.type = 'NARRATION_LOAD';
-    if(url) message.url = url; // TODO Ari
-    socket.send(message);
+
+    var data = {
+      type      : 'NARRATION_LOAD',
+      component : 'pad',
+      padId     : padId
+    }
+
+    socket.json.send(
+    {
+      type: "COLLABROOM",
+      component: "pad",
+      data: data
+    });
     // Will recieve a message back with either null or an object of cues <-> timestamps
   },
 
@@ -82,6 +103,11 @@ var narration = {
     if(url){
       narration.render(url);
     }
+  },
+  getPadId: function(){
+    //get the padId out of the url
+    var urlParts= document.location.pathname.split("/");
+    return padId = decodeURIComponent(urlParts[urlParts.length-2]);
   }
 }
 

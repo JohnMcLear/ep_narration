@@ -4,23 +4,24 @@ var db = require('../../src/node/db/DB').db;
 exports.handleMessage = function(hook_name, context, callback){
   if (context.message && context.message.data){
     if (context.message.data.type == 'NARRATION_SAVE' ) { // if it's a request to save a narration
-
-      db.set("ep_narration" + padId, context.message.data); // stick it in the database
+      var padId = context.message.data.padId;
+      db.set("ep_narration:" + padId, context.message.data); // stick it in the database
       context.client.json.send({ type: "COLLABROOM",
         data:{
           type: "narrationSaveSuccess",
           payload: true
         }
       });
-
+      callback(null); // we process this here dont pass it onto any other message handler
+      return false;
     }
   }
   
   // When a NARRATION_LOAD message comes in from the client
   if (context.message && context.message.data){
     if (context.message.data.type == 'NARRATION_LOAD' ) { // if it's a request to save a narration
-
-      db.get("ep_narration" + padId, function(err, value){ // get the current value
+      var padId = context.message.data.padId;
+      db.get("ep_narration:" + padId, function(err, value){ // get the current value
         context.client.json.send({ type: "COLLABROOM",
           data:{
             type: "narrationLoadSuccess",
@@ -29,10 +30,10 @@ exports.handleMessage = function(hook_name, context, callback){
           }
         });
       });
-
+      callback(null); // we process this here dont pass it onto any other message handler
+      return false;
     }
   }
-  callback();
 }
 
 exports.registerRoute = function (hook_name, args, cb) {
