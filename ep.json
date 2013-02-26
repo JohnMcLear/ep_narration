@@ -13,6 +13,7 @@
       },
       "client_hooks": {
         "postTimesliderInit":"ep_narration/static/js/narration",
+        "postAceInit":"ep_narration/static/js/narration",
         "handleClientMessage_narration":"ep_narration/static/js/narration"
       }
     }
