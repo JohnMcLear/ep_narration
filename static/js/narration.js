@@ -4,6 +4,10 @@ if(typeof exports == 'undefined'){
 
 // This is on the pad only, not the timeslider
 exports.postTimesliderInit = function(hook, context){
+  narration.timesliderInit();
+}
+
+exports.postAceInit = function(hook, context){
   narration.init();
 }
 
@@ -15,6 +19,27 @@ exports.handleClientMessage_narration = function(hook, context){
 var narration = {
 
   cues : {},
+
+  /* When the user clicks the record button */
+  record: function(e){
+    // updateTimer(0);
+    SC.record({
+      start: function(){
+        $("#recorderUI").show();
+        alert("Recording.."); // This doesn't work :(
+        // setRecorderUIState("recording");
+        initialRevisionNumber = pad.collabClient.getCurrentRevisionNumber(); 
+        recordingStartTime = ((+new Date()) - pad.clientTimeOffset);
+        console.log("Audio recording started at: " + recordingStartTime);
+      },
+      progress: function(ms, avgPeak){
+        console.log("SC.record - progress (nothing)");
+        // updateTimer(ms);
+      }
+    });
+    e.preventDefault();
+  },
+
 
   /* Sends the narration cues and URL to teh server */
   send: function (){
@@ -28,6 +53,7 @@ var narration = {
       url       : url, // TODO Ari
       padId     : padId
     }
+
 
     socket.json.send(
     {
@@ -98,11 +124,25 @@ var narration = {
     return results == null ? null : results[1] || true;
   },
 
-  init: function(){
+  timesliderInit: function(){
     var url = narration.gup("narration_url", window.location);
     if(url){
       narration.render(url);
     }
+  },
+
+  init: function(){ // inits the pad UI
+
+    var redirect_uri = window.location.protocol + "//" + window.location.hostname +"/ep_narrations/templates/callback";
+    SC.options.baseUrl = SC._baseUrl = "//connect.soundcloud.com";
+    SC.initialize({
+      client_id: "dfa13bddc725c315435847a800219172", // TODO move to settings
+      redirect_uri: redirect_uri
+    });
+    
+    $("#ep_narration_begin_recording").click(function(e){ // when the button is clicked begin recording
+      narration.record(e);
+    });
   },
   getPadId: function(){
     //get the padId out of the url
