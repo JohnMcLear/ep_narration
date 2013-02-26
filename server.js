@@ -34,6 +34,8 @@ exports.handleMessage = function(hook_name, context, callback){
       return false;
     }
   }
+  callback(null);
+  return false;
 }
 
 exports.registerRoute = function (hook_name, args, cb) {
