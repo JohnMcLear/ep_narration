@@ -2,3 +2,262 @@
   display:none;
   height:166px;
 }
+
+
+
+#recorderFlashContainer {
+  z-index:1;
+}
+
+
+#uploadStatus {
+  display:none;
+}
+
+#narrate-and-share {
+  display:inline-block;
+}
+
+#recorderUI {
+  width: 182px;
+  margin: auto;
+  background-color: #FFF;
+  display:inline-block;
+  height: 22px;
+  margin-top: 7px;
+  background-color: #FF350D;
+  position:relative;
+}
+
+#editbarinner {
+  text-align:center;
+}
+
+#recorderUI #timer {
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+  font-size: 22px;
+  position:relative;
+/*
+  line-height: 42px;
+  display: none;
+  position:absolute;
+  top: -2px;
+  left: 0;
+*/
+}
+
+#recorderUI.recording #timer, #recorderUI.playing #timer {
+/*  display: block;*/
+  position: absolute;
+  left: 11px;
+  top: 0;
+}
+
+#recorderUI #stop {
+  display:none;
+  position: absolute;
+  left: 117px;
+  top: 2px;
+}
+#recorderUI.recording #stop {
+  display:inline-block;
+}
+
+
+
+#recorderUI #preRecordControls, #recorderUI #postRecordControls, #recorderUI #duringUploadControls, #recorderUI #postUploadControls {
+  display: none;
+  position:absolute;
+  left:0;
+  top:0;
+}
+
+#recorderUI.reset #preRecordControls, 
+#recorderUI.playing #postRecordControls, #recorderUI.recorded #postRecordControls, #recorderUI.uploaded #postUploadControls, 
+#recorderUI.uploading #duringUploadControls, #recorderUI.connecting #duringUploadControls {
+  display: block;
+}
+
+#stop, #upload, #visit-narration, #record {
+  width: 30px;
+  margin: 1px;
+  position: absolute;
+  left: 116px;
+  top: 2px;
+  text-decoration:none;
+}
+
+#close-and-reset {
+  position: absolute;
+  right: -2px;
+  top: -6px;
+  padding: 1px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+}
+
+.secondary-link, .secondary-link:visited {
+  left: 8px;
+  top: 5px;
+  position: absolute;
+  font-size: 11px;
+  color: white;
+  width: 60px;
+  text-align: left;
+}
+
+#preRecordControls, #postRecordControls, #postUploadControls, #duringUploadControls {
+  clear: both;
+}
+
+#recorderUI #controlButton {
+/*  top: -13px;
+  position: relative;
+  left: -92px;
+*/
+}
+
+#recorderUI.uploaded #controlButton {
+  display:none;
+} 
+
+#upload-progress-meter {
+  background: url(http://sketchpad.cc/static/img/jun09/pad/connectingbar.gif) no-repeat center 0;
+  display: block;
+  left: 72px;
+  width: 105px;
+  height: 19px;
+  position: absolute;
+  top: 2px;
+}
+
+
+#controlButton { 
+  position: relative;
+/*  left: -95px;*/
+  top: -12px;
+
+  margin: auto !important; 
+  padding: 0 !important; 
+  border: 0 !important; 
+  -moz-border-radius: 0; 
+  -webkit-border-radius: 0; 
+  -o-border-radius: 0; 
+  -ms-border-radius: 0; 
+  border-radius: 0; 
+  -webkit-transition: none; 
+  -moz-transition: none; 
+  -o-transition: none; 
+  transition: none; 
+  display: block; 
+  width: 42px; 
+  height: 42px; 
+  background-color: transparent !important; 
+  background-image: url(http://sketchpad.cc/static/css/rec_button_small.png) !important; 
+  background-position: 0 0; 
+}
+
+#recorderUI.recording #controlButton {
+  background-position: 0 -42px;
+}
+#recorderUI.playing #controlButton {
+  background-position: 0 -42px;
+}
+#recorderUI.recorded #controlButton { 
+  background-position: 0 -84px; 
+}
+#recorderUI.uploading #controlButton, #recorderUI.connecting #controlButton { 
+  display:none; 
+}
+#controlButton.pause { 
+  background-position: 0 -126px; 
+}
+
+
+
+
+.button {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+  color: #333;
+  font-size: 12px;
+  margin-top: 8px;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e5e5e5)) repeat-x, #fff;
+  -webkit-border-radius: 50px;
+  -webkit-transition: background 0.3s linear, color 0.1s linear, border 0.2s linear, box-shadow 0.2s linear;
+  -moz-transition:    background 0.3s linear, color 0.1s linear, border 0.2s linear, moz-box-shadow 0.2s linear;
+  -o-transition:      background 0.3s linear, color 0.1s linear, border 0.2s linear, box-shadow 0.2s linear;
+}
+
+.button, .button:visited {
+  display: block;
+  float: left;
+  margin: 0 5px 0 0;
+  padding: 0 10px;
+  position: relative;
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ddd #d7d7d7 #ccc #d7d7d7;
+  -webkit-border-radius: 50px; /* Safari 3-4, iOS 1+, Android 1.5+ */
+     -moz-border-radius: 50px; /* FF1+ */
+          border-radius: 50px; /* Opera 10.5, IE9, Safari 5, Chrome, FF4 */
+  /* Prevents background colour from leaking outside the border */
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+       /* background-clip: padding-box; (opera doesnâ€™t like this) */
+  
+  
+  background-color: #e5e5e5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e5e5e5)); /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #fff, #e5e5e5); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, #fff, #e5e5e5); /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #fff, #e5e5e5); /* IE10 */
+  background-image: -o-linear-gradient(top, #fff, #e5e5e5); /* Opera 11.10+ */
+  background-image: linear-gradient(top, #fff, #e5e5e5);
+  
+  font-size: 12px;
+  line-height: 15px;
+  height: auto;
+  text-decoration: none;
+  font-weight: normal;
+  text-shadow: white 0 1px 0; /* FF3.5+, Opera 9+, Saf1+, Chrome */
+  color: #333;
+  cursor: pointer;
+  
+  -webkit-transition: border-color .3s linear, color .4s linear, -webkit-box-shadow .4s linear; /* Safari 3.2+, Chrome */
+     -moz-transition: border-color .3s linear, color .4s linear, -moz-box-shadow .4s linear; /* FF4+ */
+       -o-transition: border-color .3s linear, color .4s linear, box-shadow .4s linear; /* Opera 10.5+ */
+      -ms-transition: border-color .3s linear, color .4s linear, box-shadow .4s linear; /* IE10? */
+          transition: border-color .3s linear, color .4s linear, box-shadow .4s linear;
+}
+
+.button:hover {
+  border-color: #c0c0c0 #cacaca #b0b0b0 #cacaca;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* Safari 3.0+, Chrome */  
+     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* FF3.5+ */
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* FF 4.0+, Chrome 10+, Opera 10.5, IE9 */
+  color: #111;
+}
+
+.button:active {
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#fff)); /* Safari 4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #e5e5e5, #ffffff); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, #e5e5e5, #fff); /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #e5e5e5, #fff); /* IE10 */
+  background-image: -o-linear-gradient(top, #e5e5e5, #fff); /* Opera 11.10+ */
+  background-image: linear-gradient(top, #e5e5e5, #fff);
+}
+
+.button.big {
+  font-size: 21px;
+  line-height: 38px;
+  padding: 6px 30px;
+  padding: 0 30px;
+}
