@@ -134,7 +134,8 @@ var narration = {
   },
 
   init: function(){ // inits the pad UI
-    var redirect_uri = window.location.protocol + "//" + window.location.hostname + "/ep_narration/callback";
+    var port = (window.location.port) ? ":"+(window.location.port) : "";
+    var redirect_uri = window.location.protocol + "//" + window.location.hostname + port + "/ep_narration/callback";
     console.log("redirect_uri", redirect_uri);
     SC.options.baseUrl = SC._baseUrl = "//connect.soundcloud.com";
     var x = SC.initialize({
