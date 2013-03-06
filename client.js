@@ -7,6 +7,7 @@ exports.eejsBlock_scripts = function (hook_name, args, cb) {
 
 exports.eejsBlock_editbarMenuRight = function (hook_name, args, cb) {
   args.content = eejs.require("ep_narration/templates/button.html", {}, module) + args.content;
+  args.content = eejs.require("ep_narration/templates/styles.html", {}, module) + args.content;
   return cb();
 };
 

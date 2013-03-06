@@ -1,1 +1,33 @@
 <li><a id="ep_narration_begin_recording">Record narration</a></li>
+
+
+<div id="recorderUI" class="reset" style="display:none;">
+  <a href="#" id="close-and-reset">x</a>
+  <a href="#" id="controlButton" class="record" style="width:42px;height:42px;"></a>
+  <span id="timer">0:00</span>
+
+  <a href="#" id="stop" class="button">Stop</a>
+
+  <span id="preRecordControls">
+    <a href="#" class="secondary-link" id="recording-cancel">Close</a> 
+    <a href="#" id="record" class="button">Begin</a>
+  </span>
+
+  <span id="postRecordControls">
+    <!-- <a href="#" class="secondary-link" id="recording-cancel">Cancel</a> -->
+    <a href="#" class="secondary-link" id="recording-preview">Preview</a>
+    <a href="#" id="upload" class="button">Save</a>
+  </span>
+
+  <span id="postUploadControls">
+    <span class="secondary-link">Success!</span>
+    <a href="#" id="visit-narration" class="button" target="_blank">View</a>
+  </span>
+
+  <span id="duringUploadControls">
+    <span class="secondary-link">Uploading...</span>
+    <div id="upload-progress-meter"></div>
+  </span>
+
+  <span id="uploadStatus"></span>
+</div>
