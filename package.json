@@ -8,7 +8,9 @@
     "url": "John McLear"
   },
   "contributors": [{
-    "name": "Ari Bader-Natal"
+    "name": "Ari Bader-Natal", 
+    "email": "ari@sketchpad.cc", 
+    "url": "http://sketchpad.cc"
   }],
   "dependencies": {
   },
