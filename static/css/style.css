@@ -1,6 +1,16 @@
-#soundCloudTopContainer{
-  display:none;
-  height:166px;
+#soundCloudTopContainer {
+/*  display:none;*/
+  height:61px;
+  width:100%;
+  text-align:center;
+}
+
+#soundCloudTopContainer div#soundcloud-loading-placeholder { 
+  background: url(../img/progressbar.gif) no-repeat center 0;
+  display: block; 
+  width:300px; 
+  height:19px;
+  text-align:center; 
 }
 
 
@@ -126,7 +136,7 @@
 } 
 
 #upload-progress-meter {
-  background: url(http://sketchpad.cc/static/img/jun09/pad/connectingbar.gif) no-repeat center 0;
+  background: url(../img/progressbar.gif) no-repeat center 0;
   display: block;
   left: 72px;
   width: 105px;
@@ -157,7 +167,7 @@
   width: 42px; 
   height: 42px; 
   background-color: transparent !important; 
-  background-image: url(http://sketchpad.cc/static/css/rec_button_small.png) !important; 
+  background-image: url(../img/rec_button_small.png) !important; 
   background-position: 0 0; 
 }
 

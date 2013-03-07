@@ -17,7 +17,7 @@ exports.handleClientMessage_narration = function(hook, context){
 }
 
 var narration = {
-
+  
   cues : {},
 
   /* When the user clicks the record button */
@@ -90,7 +90,7 @@ var narration = {
     // Will recieve a message back with either null or an object of cues <-> timestamps
   },
 
-  /* Given a timestmap we move to a specific revision */
+  /* Given a timestamp we move to a specific revision */
   moveToRev: function(timestamp){
     console.log("moving to TS", timestamp);
     // var revisionNumber = getRevisionNumberFromTimestamp(timestamp);
@@ -98,31 +98,41 @@ var narration = {
   },
 
   render: function(narration_url){
-    narration.request(narration_url); // request the narrations
-    $('#sc-widget').attr("src", narration_url + "&show_artwork=false");
+    $(".soundcloud-url").attr("href", narration_url);
+    
     $('#timeslider-wrapper').hide();
-    $('#soundCloudTopContainer').show();
+    var popcorn = Popcorn.soundcloud( "#soundCloudTopContainer", narration_url, { frameAnimation: true } );    
+    
+    popcorn.media.addEventListener( "readystatechange", function() {
+      $("#soundcloud-loading-placeholder").hide();
+    });
 
-   (function(){
-
-     var widgetIframe = document.getElementById('sc-widget');
-     var widget       = SC.Widget(widgetIframe);
-
-     widget.bind(SC.Widget.Events.READY, function() {
-       widget.bind(SC.Widget.Events.SEEK, function() { // on click of narration
-         console.log("Moving ooh yes im moving to a new revision");
-         widget.getPosition(function(pos){
-           narration.moveToRev(pos);
-         });
-       });
-     });
-    }());
+    popcorn.on( "load", function() {
+      
+      // nothing here!
+      var narration_cues = narration.request(narration_url); 
+      
+      console.log("narration_cues", narration_cues);
+      
+      // $.each(narration_cues, function(timestamp, revision) { 
+      //   
+      //   popcorn.code({
+      //     start: timestamp, 
+      //     onStart: function() {
+      //       console.log("updating time slider at time "+timestamp+" to rev."+revision);
+      //       BroadcastSlider.setSliderPosition(revision);
+      //     }
+      //   });
+      //   
+      // });
+        
+    });
   },
 
   gup: function(name, url) { // gets url parameters
     name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
     var results = new RegExp('[?&]'+name+'=?([^&#]*)').exec(url || window.location.href);
-    return results == null ? null : results[1] || true;
+    return results == null ? null : decodeURIComponent(results[1]) || true;
   },
 
   timesliderInit: function(){
@@ -150,7 +160,6 @@ var narration = {
     
     
     $(document).on("click", "#recorderUI.recording #controlButton, #recorderUI.recording #stop", function(e){
-      // invokeCanvasRendering();
       narration.setRecorderUIState("recorded");
       $(".secondary-link").show();
       SC.recordStop();
@@ -198,7 +207,8 @@ var narration = {
       $("#upload-progress-meter").hide();
       $("#duringUploadControls .secondary-link").html("Connecting...");
 
-      var playback_url = "http://" + location.host + "/p/" + clientVars.readOnlyId + "/timeslider";
+      var playback_url = "http://" + location.host + "/p/" + clientVars.padId + "/timeslider"; 
+      // switch to clientVars.readOnlyId
 
       SC.connect({
         connected: function(){
@@ -248,14 +258,14 @@ var narration = {
     
   },
   
-  saveCueData: function(soundcloudUrl, callback) { 
+  saveCueData: function(narration_url, callback) { 
     // $.ajax({
     //   type: 'post',
     //   url: '/p/pad/narration',
     //   data: {
     //     padId: pad.getPadId(),
     //     cues: JSON.stringify(cueData),
-    //     soundcloudUrl: soundcloudUrl
+    //     narration_url: narration_url
     //   },
     //   success: function(e) {
     //     console.log("success! " + e);
