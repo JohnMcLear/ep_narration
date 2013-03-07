@@ -1,4 +1,5 @@
 var db = require('../../src/node/db/DB').db;
+var settings = require('ep_etherpad-lite/node/utils/Settings');
 
 // When a new NARRATION_SAVE message comes in from the client
 exports.handleMessage = function(hook_name, context, callback){
@@ -45,3 +46,15 @@ exports.registerRoute = function (hook_name, args, cb) {
   });
   cb();
 }
+
+exports.clientVars = function(hook, context, callback)
+{
+  if(settings.ep_narration){ // Only execute 
+    var soundcloudApiKey = settings.ep_narration.soundcloudApiKey;
+  }else{
+    var soundcloudApiKey = false;
+  }
+
+  // tell the client which year we are in
+  return callback({ "soundcloudApiKey": soundcloudApiKey });
+};

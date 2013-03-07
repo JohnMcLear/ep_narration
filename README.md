@@ -3,6 +3,14 @@ Create audio narrations over pad and have it play in time with your changes.
 
 # Installation
 Set your callback endpoint in soundcloud as http://yourEtherpadServerHostname/ep_narration/callback
+Add the following to your settings.json (Either by visiting /admin/settings or by manually editing the file)
+```
+"ep_narration":{
+  "soundcloudApiKey" : "ap38a725194a3c1082753226c4af53242b"
+}
+```
+
+Inserting your API key above
 
 # TODO
 Pad:
@@ -34,3 +42,5 @@ narrationTest:{
 
 # FUTURE VERSIONS TODO
 * TODO
+
+

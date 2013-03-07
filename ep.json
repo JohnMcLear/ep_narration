@@ -9,7 +9,8 @@
         "eejsBlock_scripts": "ep_narration/client",
         "eejsBlock_timesliderScripts": "ep_narration/client",
         "eejsBlock_timesliderStyles": "ep_narration/client",
-        "expressCreateServer" : "ep_narration/server:registerRoute"
+        "expressCreateServer" : "ep_narration/server:registerRoute",
+        "clientVars" : "ep_narration/server"
       },
       "client_hooks": {
         "postTimesliderInit":"ep_narration/static/js/narration",
