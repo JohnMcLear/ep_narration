@@ -139,7 +139,7 @@ var narration = {
     console.log("redirect_uri", redirect_uri);
     SC.options.baseUrl = SC._baseUrl = "//connect.soundcloud.com";
     var x = SC.initialize({
-      client_id: clientVars.soundcloudApiKey", // Note that the soundcloudApiKey comes from the clientVars that are passed to us from the Etherpad server
+      client_id: clientVars.soundcloudApiKey, // Note that the soundcloudApiKey comes from the clientVars that are passed to us from the Etherpad server
       redirect_uri: redirect_uri
     });
     console.log(x);
