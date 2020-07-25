@@ -1,19 +1,20 @@
 {
   "name": "ep_narration",
   "description": "Audio Narration over Pads",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "johnyma22",
     "email": "john@mclear.co.uk",
     "url": "John McLear"
   },
-  "contributors": [{
-    "name": "Ari Bader-Natal", 
-    "email": "ari@sketchpad.cc", 
-    "url": "http://sketchpad.cc"
-  }],
-  "dependencies": {
-  },
+  "contributors": [
+    {
+      "name": "Ari Bader-Natal",
+      "email": "ari@sketchpad.cc",
+      "url": "http://sketchpad.cc"
+    }
+  ],
+  "dependencies": {},
   "engines": {
     "node": ">= 0.4.1"
   }
